@@ -1,6 +1,5 @@
-# Ex1
-//My ReadME:
-Hey,
+#Ex1-Read Me
+
 My project is about representing weighted and unintended graphs and running algorithms on them.
 An undirectional weighted graph is a graph with vertices and edges.The nodes numbered by uniques keys. Each edge in the graph has a weight. Each edge connects 2 vertices in a way that can be moved on the edge in both directions. 
 My project hierarchy is structured as follows: Representation of a node(no access to this object)->representation of a graph->representation of algorithms and methods on graph.
