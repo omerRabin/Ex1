@@ -257,7 +257,7 @@ public class WGraph_Algo implements weighted_graph_algorithms,Serializable  {
     public boolean equals(Object ot){
         if(ot==null || !(ot instanceof WGraph_DS)){return false;}
         Iterator<node_info> it= ((WGraph_DS) ot).getV().iterator();
-        if(((WGraph_DS) ot).getMC()!=this.ga.getMC() || ((WGraph_DS) ot).edgeSize()!=this.ga.edgeSize()||
+        if( ((WGraph_DS) ot).edgeSize()!=this.ga.edgeSize()||
                 ((WGraph_DS) ot).nodeSize()!=this.ga.nodeSize()) return false;//try to fail if one of the fields is not equal to ga fields
         while(it.hasNext()){//check if the graph structures are equal
             if(!containsNode(it.next())) return false;

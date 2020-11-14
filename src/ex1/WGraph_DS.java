@@ -29,11 +29,11 @@ public class WGraph_DS implements weighted_graph, Serializable {
      */
     public WGraph_DS (weighted_graph g)
     {
+        this.MC=0;
         this.edges=g.edgeSize();
         this.nodeSize=g.nodeSize();
         this.graph=new HashMap<Integer, node_info>();
         Iterator<node_info> it=g.getV().iterator();
-        this.MC=g.getMC();
         while(it.hasNext())//loop the nodes in graph g and copy the nodes to the new copy object with unique keys
         {
             node_info current=it.next();
@@ -198,13 +198,12 @@ public class WGraph_DS implements weighted_graph, Serializable {
     @Override
     public int getMC() {return this.MC;
     }
-
     /**
-     * the method return information about the graph
+     *the method return the info about the graph without MC print for check the function because the copy method initialize the MC
      * @return result
      */
     public String toString(){
-        String result="This Graph has: "+nodeSize+" nodes, "+ edges+" edges and the number of changing in the graph is: "+ MC+" ";
+        String result="This Graph has: "+nodeSize+" nodes, "+ edges+" edges";
         Iterator<node_info> it=getV().iterator();
         while (it.hasNext()){
             node_info currentNode=it.next();

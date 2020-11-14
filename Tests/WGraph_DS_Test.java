@@ -109,16 +109,9 @@ public class WGraph_DS_Test {
     public void toStringTest(){
         WGraph_DS g1=new WGraph_DS(graph);
         assertEquals(graph.toString(),g1.toString());
-        g1.removeEdge(1,0);
-        g1.removeEdge(1,2);
-        g1.removeEdge(1,3);
-        g1.removeEdge(1,4);
-        g1.removeEdge(1,5);
-        g1.removeEdge(1,6);
-        g1.removeEdge(1,7);
-        g1.removeEdge(1,8);
-        g1.removeEdge(1,9);
-        g1.removeEdge(1,10);
+        for(int i=0;i<g1.nodeSize();i++){
+            g1.removeNode(i);
+        }
         assertEquals(false,graph.toString().equals(g1.toString()));
     }
 }
