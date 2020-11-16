@@ -222,6 +222,33 @@ public class WGraph_DS implements weighted_graph, Serializable {
         return result;
     }
     /**
+     * this method check if object ot is equal to this.ga
+     * @param ot
+     * @return true if equal else return false
+     */
+    public boolean equals(Object ot){
+        if(ot==null || !(ot instanceof WGraph_DS)){return false;}
+        Iterator<node_info> it= ((WGraph_DS) ot).getV().iterator();
+        if( ((WGraph_DS) ot).edgeSize()!=this.edgeSize()||
+                ((WGraph_DS) ot).nodeSize()!=this.nodeSize) return false;//try to fail if one of the fields is not equal to ga fields
+        while(it.hasNext()){//check if the graph structures are equal
+            if(!containsNode(it.next())) return false;
+        }
+        return true;
+    }
+    /**
+     *this method cheack if ot.graph is equal to this.ga.graph
+     * @param n
+     * @return
+     */
+    public boolean containsNode(node_info n){
+        Iterator<node_info> it=this.getV().iterator();
+        while (it.hasNext()){
+            if(it.next().getKey()==n.getKey()) return true;//if the keys are equal its enough
+        }
+        return false;
+    }
+    /**
      * represents the set of operations applicable on a node (vertex) in an (undirectional) weighted graph.
      */
     private class NodeInfo implements node_info,Serializable{

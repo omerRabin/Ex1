@@ -1,12 +1,9 @@
 import ex1.WGraph_Algo;
 import ex1.WGraph_DS;
-import ex1.node_info;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import java.util.Iterator;
 import java.util.Random;
 
 public class WGraph_AlgoTest {
@@ -46,7 +43,7 @@ public class WGraph_AlgoTest {
         graphA.init(graph);
         WGraph_DS a;
         a=(WGraph_DS) graphA.copy();
-        boolean resultCopy=graphA.equals(a);//my equals method check if two graph is deeply equal
+        boolean resultCopy=graphA.getGraph().equals(a);//my equals method check if two graph is deeply equal
         assertEquals(true,resultCopy);
     }
     @Test
@@ -122,7 +119,7 @@ public class WGraph_AlgoTest {
         g.connect(6,3,9);
         g.connect(5,3,3);
         graphA.init(g);
-        assertEquals(4,graphA.shortestPath(0,6).size());
+        assertEquals(15,graphA.shortestPathDist(0,6));
     }
     @Test
     public void saveTest(){
@@ -131,7 +128,7 @@ public class WGraph_AlgoTest {
         graphA.save(file_name);
         WGraph_Algo wg=new WGraph_Algo();
         wg.load(file_name);
-        boolean result=graphA.equals(wg.getGraph());//check if equal with deep equal checking
+        boolean result=graphA.getGraph().equals(wg.getGraph());//check if equal with deep equal checking
         Assertions.assertEquals(true,result);
     }
     @Test

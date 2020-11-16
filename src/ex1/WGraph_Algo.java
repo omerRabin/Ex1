@@ -100,7 +100,8 @@ public class WGraph_Algo implements weighted_graph_algorithms,Serializable  {
     @Override
     public double shortestPathDist(int src, int dest) {
         if(shortestPath(src,dest)==null) return -1;
-        return (shortestPath(src,dest).size()-1);
+        double sum=0;
+        return shortestPath(src,dest).get(shortestPath(src,dest).size()-1).getTag();
     }
     /**
      *the method return a list represent the path from source to destination in the graph
@@ -133,11 +134,13 @@ public class WGraph_Algo implements weighted_graph_algorithms,Serializable  {
             Iterator<node_info> currentIt=gCopy.getV(listPath.get(counter).getKey()).iterator();//iterator on the ni-list of the
             //last node were insert to the listPath
             if(currentIt!=null) {
-                node_info current=currentIt.next();
-                node_info min=current;
+                node_info min=null;
                 while (currentIt.hasNext()){
-                    if(current.getTag()<min.getTag()) min=current;//update the node that has the minmium tag
-                    currentIt.next();
+                    node_info currentLoop=currentIt.next();
+                    if(currentLoop.getTag()+gCopy.getEdge(listPath.get(counter).getKey(),currentLoop.getKey())==
+                            listPath.get(counter).getTag()){//check if this is the node that appropriate to the shortest path
+                        min=currentLoop;
+                    }
                 }
                 listPath.add(min);//insert to listPath
                 counter++;
@@ -249,31 +252,5 @@ public class WGraph_Algo implements weighted_graph_algorithms,Serializable  {
         }
         return false;
     }
-    /**
-     * this method check if object ot is equal to this.ga
-     * @param ot
-     * @return true if equal else return false
-     */
-    public boolean equals(Object ot){
-        if(ot==null || !(ot instanceof WGraph_DS)){return false;}
-        Iterator<node_info> it= ((WGraph_DS) ot).getV().iterator();
-        if( ((WGraph_DS) ot).edgeSize()!=this.ga.edgeSize()||
-                ((WGraph_DS) ot).nodeSize()!=this.ga.nodeSize()) return false;//try to fail if one of the fields is not equal to ga fields
-        while(it.hasNext()){//check if the graph structures are equal
-            if(!containsNode(it.next())) return false;
-        }
-        return true;
-    }
-    /**
-     *this method cheack if ot.graph is equal to this.ga.graph
-     * @param n
-     * @return
-     */
-    public boolean containsNode(node_info n){
-        Iterator<node_info> it=this.ga.getV().iterator();
-        while (it.hasNext()){
-            if(it.next().getKey()==n.getKey()) return true;//if the keys are equal its enough
-        }
-        return false;
-    }
+
 }

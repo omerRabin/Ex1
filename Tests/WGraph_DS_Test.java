@@ -1,4 +1,5 @@
 
+import ex1.WGraph_Algo;
 import ex1.WGraph_DS;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -113,5 +114,11 @@ public class WGraph_DS_Test {
             g1.removeNode(i);
         }
         assertEquals(false,graph.toString().equals(g1.toString()));
+    }
+    @Test
+    public void equalsTest(){
+        WGraph_DS g1=new WGraph_DS(graph);
+        boolean eq=graph.equals(g1);
+        assertEquals(true,eq);
     }
 }
