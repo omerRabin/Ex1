@@ -1,12 +1,12 @@
-
-import ex1.WGraph_Algo;
-import ex1.WGraph_DS;
+package ex1.tests;
+import ex1.src.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Collection;
 import java.util.Random;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class WGraph_DS_Test {
 

@@ -1,8 +1,7 @@
-package ex1;
+package ex1.src;
 
 import java.io.*;
 import java.util.*;
-
 //WGraph_Algo represent algorithms on graph
 public class WGraph_Algo implements weighted_graph_algorithms,Serializable  {
     private weighted_graph ga;//represent graph

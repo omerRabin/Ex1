@@ -1,7 +1,10 @@
-package ex1;
+package ex1.src;
 
 import java.io.Serializable;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+
 /**
  * this class represents an undirectional weighted graph
  */
@@ -10,7 +13,7 @@ public class WGraph_DS implements weighted_graph, Serializable {
     private int MC;//mode counter-count number of changes on graph
     private int edges;//number of edges in graph
     private int nodeSize;//number of nodes in graph
-    private HashMap<Integer,node_info> graph;//Hash-Map structure represents the graph
+    private HashMap<Integer, node_info> graph;//Hash-Map structure represents the graph
     /**
      * constructor for WGraph_DS
      */
@@ -27,7 +30,7 @@ public class WGraph_DS implements weighted_graph, Serializable {
      * constructor for graph g in the parameter
      * @param g
      */
-    public WGraph_DS (weighted_graph g)
+    public WGraph_DS(weighted_graph g)
     {
         this.MC=0;
         this.edges=g.edgeSize();
@@ -241,7 +244,7 @@ public class WGraph_DS implements weighted_graph, Serializable {
      * @param n
      * @return
      */
-    public boolean containsNode(node_info n){
+    private boolean containsNode(node_info n){
         Iterator<node_info> it=this.getV().iterator();
         while (it.hasNext()){
             if(it.next().getKey()==n.getKey()) return true;//if the keys are equal its enough
@@ -256,14 +259,14 @@ public class WGraph_DS implements weighted_graph, Serializable {
         private double tag;//tag value for temporal marking an node
         private String info;//remark (meta data) associated with this node
         private HashMap<Integer,Double> weights;//Hash-Map structure represents the weights by key pairs
-        private HashMap<Integer,node_info> ni;//represents all the neighbors of node by inserting its key
+        private HashMap<Integer, node_info> ni;//represents all the neighbors of node by inserting its key
         //constructor
         public NodeInfo(int key)
         {
             //initialize important fields
             this.key=key;
             this.weights=new HashMap<Integer,Double>();
-            this.ni=new HashMap<Integer,node_info>();
+            this.ni=new HashMap<Integer, node_info>();
         }
         //getters and setters
         @Override
